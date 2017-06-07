@@ -17,6 +17,6 @@ IDE需要安装lombok plugin(自行Google或百度)
 
 简易问卷调查核心逻辑实现,可以记录问卷历史
 
-问卷已code为业务标记,valid为true表示当前有效的版本
+问卷以code为业务标记,valid为true表示当前有效的版本
 
 问卷调查结果关联surveyId
