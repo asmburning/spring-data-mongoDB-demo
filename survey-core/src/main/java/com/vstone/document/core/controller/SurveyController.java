@@ -1,6 +1,5 @@
 package com.vstone.document.core.controller;
 
-import com.vstone.api.util.common.Response;
 import com.vstone.document.api.domain.Option;
 import com.vstone.document.api.domain.Question;
 import com.vstone.document.api.domain.Survey;
@@ -30,7 +29,7 @@ public class SurveyController {
     private SurveyService surveyService;
 
     @GetMapping(value = "/testSave")
-    public Response<Survey> testSave() {
+    public Survey testSave() {
         Survey survey = new Survey();
         // survey.setId(IdUtil.nextId());
         survey.setCode("orgRisk");
@@ -44,7 +43,7 @@ public class SurveyController {
 
         survey.setQuestionList(questionList);
         surveyService.saveSurvey(survey);
-        return new Response<>(survey);
+        return survey;
     }
 
     private Question getQuestion1() {
@@ -129,26 +128,26 @@ public class SurveyController {
     }
 
     @GetMapping(value = "/findById")
-    public Response<Survey> getById(@RequestParam String id) {
+    public Survey getById(@RequestParam String id) {
         Survey survey = surveyService.findOne(id);
-        return new Response<>(survey);
+        return survey;
     }
 
     @GetMapping(value = "/getAll")
-    public Response<List<Survey>> getAll() {
+    public List<Survey> getAll() {
         List<Survey> surveyList = surveyService.findAll();
-        return new Response<>(surveyList);
+        return surveyList;
     }
 
     @GetMapping(value = "/getByCode")
-    public Response<List<Survey>> findAllByCode() {
+    public List<Survey> findAllByCode() {
         List<Survey> surveyList = surveyService.findAllByCode("orgRisk");
-        return new Response<>(surveyList);
+        return surveyList;
     }
 
     @GetMapping(value = "/findValidByCode")
-    public Response<Survey> getById() {
+    public Survey getById() {
         Survey survey = surveyService.findValidByCode("orgRisk");
-        return new Response<>(survey);
+        return survey;
     }
 }
